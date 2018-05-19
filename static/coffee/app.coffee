@@ -16,10 +16,11 @@ class Driver
         else
             port = parseInt window.location.port
         @server =
-            host: window.location.hostname
-            port: port
+            host: 'localhost' # window.location.hostname
+            port: '28015' #port
             protocol: if window.location.protocol is 'https:' then 'https' else 'http'
-            pathname: window.location.pathname
+
+            pathname: '/' #window.location.pathname
 
         @hack_driver()
 

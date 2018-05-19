@@ -20,11 +20,11 @@ var gulp = require('gulp'),
     hbsfy = require('hbsfy');
 
 var ROOT_DIR = path.resolve(__dirname, '..'),
-    BUILD_DIR = ROOT_DIR+'/build',
-    WEBUI_DIR = ROOT_DIR+'/admin',
+    BUILD_DIR ='./build',
+    WEBUI_DIR =path.resolve(__dirname, '.'),
     WEB_ASSETS_DIR = BUILD_DIR+'/web_assets',
     WEB_OBJ_DIR = BUILD_DIR+'/web_obj',
-    STATIC_DIR = WEBUI_DIR+'/static',
+    STATIC_DIR = './static',
     COFFEE_DIR = STATIC_DIR+'/coffee',
     JS_BUNDLE_FILE = 'cluster-min.js',
     LESS_DIR = STATIC_DIR+'/less',
@@ -127,7 +127,7 @@ function createBundler(watch) {
   })
     // Allows var r = require('rethinkdb') without including the
     // driver source in this bundle
-    .exclude('rethinkdb')
+    // .exclude('rethinkdb')
     // Need to exclude the version file so we don't accidentally pick
     // up something off the filesystem
     .exclude('rethinkdb-version')
@@ -142,8 +142,8 @@ function createBundler(watch) {
 
   return retval
     .add(VERSION_FILE, {expose: 'rethinkdb-version'})
-    .add(DRIVER_BUILD_DIR+'/rethinkdb.js',
-         {expose: 'rethinkdb'})
+    // .add(DRIVER_BUILD_DIR+'/rethinkdb.js',
+    //      {expose: 'rethinkdb'})
     .on('update', rebundle)
     .on('error', function(e){error("Browserify error:", e);})
     .on('log', function(msg){info("Browserify: "+msg);});

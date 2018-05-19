@@ -67,7 +67,6 @@ class MainContainer extends Backbone.View
     fetch_data: (me) =>
         query = r.expr
             tables: r.db(system_db).table('table_config').pluck('db', 'name', 'id').coerceTo("ARRAY")
-            servers: r.db(system_db).table('server_config').pluck('name', 'id').coerceTo("ARRAY")
             issues: driver.queries.issues_with_ids()
             num_issues: r.db(system_db).table('current_issues').count()
             num_servers: r.db(system_db).table('server_config').count()
@@ -75,7 +74,7 @@ class MainContainer extends Backbone.View
             num_available_tables: r.db(system_db).table('table_status')('status').filter( (status) ->
                 status("all_replicas_ready")
             ).count()
-            me: if me.proxy then "<proxy node>" else me.name
+            #me: if me.proxy then "<proxy node>" else me.name
 
 
         @timer = driver.run query, 5000, (error, result) =>
