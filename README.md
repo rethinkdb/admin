@@ -2,7 +2,7 @@
 
 ## Build
 
-The MAKE file for the web interface is in `/mk/webui.mk`.
+`npm run build`
 
 The build dependencies are
 - `node.js` and `npm` are needed at the system level
