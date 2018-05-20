@@ -15,6 +15,7 @@ class Driver
                 port = 80
         else
             port = parseInt window.location.port
+        console.log window.location.pathname
         @server =
             host: 'localhost' # window.location.hostname
             port: '28015' #port

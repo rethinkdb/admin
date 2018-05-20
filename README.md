@@ -2,21 +2,11 @@
 
 ## Build
 
-`npm run build`
+`npm run start` - this will start the admin as Electron app
 
 The build dependencies are
 - `node.js` and `npm` are needed at the system level
 - `npm install` will install dependencies listed in `npm-shrinkwrap.json`
-
-### Adding dependencies
-- Add the dependency to the `dependencies` object in `package.json`
-- Delete the file `npm-shrinkwrap.json`
-- Delete `node_modules` in this directory if it exists
-- `$ npm install` in this directory (admin)
-- `$ npm dedupe` this will flatten dependencies as much as possible
-- `$ npm shrinkwrap` this will generate a new `npm-shrinkwrap.json`
-- Bump the version in `mk/support/pkg/admin-deps.sh` (this ensures make will download new dependencies if necessary)
-- Check in the changes to `npm-shrinkwrap.json`, `package.json` and `admin-deps.sh`
 
 ## Organization
 - `favicon.ico`: The favicon...

@@ -2,9 +2,12 @@
   "name": "rethinkdb-webui",
   "version": "2.0.0",
   "description": "WebUI for RethinkDB.",
-  "main": "gulpfile.js",
+  "main": "main.js",
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "watch": "gulp",
+    "start": "NODE_ENV=dev concurrently \"npm run watch\" \"npm run start-main\"",
+    "start-main": "electron ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,7 @@
   },
   "homepage": "https://github.com/rethinkdb/rethinkdb",
   "dependencies": {
+    "ajv": "^6.5.0",
     "bluebird": "^2.3.2",
     "browserify": "^13.1.0",
     "coffeeify": "^2.0.0",
@@ -41,5 +45,10 @@
     "vinyl-source-stream": "^1.0.0",
     "virtual-dom": "^2.0.1",
     "yargs": "^3.4.5"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "electron": "^2.0.1",
+    "electron-builder": "^20.13.4"
   }
 }
